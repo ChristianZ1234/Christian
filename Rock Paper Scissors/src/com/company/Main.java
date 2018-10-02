@@ -14,7 +14,7 @@ public class Main {
         String computerChoice = null;
 
         if (generatorNum == 1){
-            computerChoice = "Rock";
+            computerChoice = "Rock";//qwwewefsd
         }if (generatorNum == 2){
             computerChoice = "Paper";
         }if (generatorNum == 3){
