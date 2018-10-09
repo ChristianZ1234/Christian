@@ -9,18 +9,21 @@ public class Main {
         System.out.println("Rock, Paper, Scissors");
         Scanner userInput = new Scanner(System.in);
         Random generator = new Random();
+        //user choice input
         String userChoice = userInput.nextLine();
+        //Randomly generates number for computer
         int generatorNum = generator.nextInt(3);
         String computerChoice = null;
-
+        //Computer's generated choices (1,2,3)
         if (generatorNum == 1){
             computerChoice = "Rock";
-        }if (generatorNum == 2){
+        } else if (generatorNum == 2){
             computerChoice = "Paper";
-        }if (generatorNum == 3){
+        } else if (generatorNum == 3){
             computerChoice = "Scissors";
         }
-
+        //Decides who wins
+        //Prints computer and player choice
         if (userChoice == computerChoice){
             System.out.println("Tie, you both choose " + userChoice);
         } else if (userChoice.equals("Rock") && computerChoice.equals("Paper")){
