@@ -11,8 +11,9 @@ import java.util.ArrayList;
 public class Controller {
     ArrayList<Integer> numbers = new ArrayList<Integer>();
     ArrayList<String> operators = new ArrayList<String>();
+    public TextField textField;
     public Button btnEqual;
-    public Label textField;
+
     public boolean clear=true;
 
 
@@ -85,31 +86,35 @@ public class Controller {
     }
 
     public void buttonEqual(ActionEvent actionEvent) {
-
-        int calculations;
-        calculations = numbers.get(0);
-        System.out.println(calculations); //first number in calculations array
-        for (int i = 0; i<numbers.size() - 1; i++){
-
+        String temp = "";
+        for (int i = 0; i<textField.getLength(); i++){
+            if (Character.isDigit(textField.getText().charAt(i))){
+                temp += textField.getText().charAt(i);
+            }else{
+                numbers.add(Integer.parseInt(temp));
+                temp = "";
+            }
         }
+        numbers.add(Integer.parseInt(temp));
 
-        for (int i = 1; i<numbers.size(); i++){
+        int calculations = numbers.get(0);
+
+        for (int i = 0; i<operators.size(); i++){
             //plus
-            if(operators.get(i-1).equals("+")){
-                calculations += numbers.get(i);
+            if(operators.get(i).equals("+")){
+                calculations += numbers.get(i+1);
             }
             //subtract
-            if(operators.get(i-1).equals("-")){
-                calculations -= numbers.get(i);
+            if(operators.get(i).equals("-")){
+                calculations -= numbers.get(i+1);
             }
             //multiply
-            if(operators.get(i-1).equals("*")){
-                calculations *= numbers.get(i);
+            if(operators.get(i).equals("*")){
+                calculations *= numbers.get(i+1);
             }
             //clear
             if(clear==false){ }
-        textField.setText(new Integer(calculations).toString());
-        System.out.println(calculations);
+            textField.setText(String.valueOf(calculations));
         }
     }
 }
